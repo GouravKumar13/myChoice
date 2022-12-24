@@ -58,13 +58,18 @@ const myChoice = {
     ]
   }
 };
+
 export default function App() {
+  const [selectedbranch, setbranch] = useState("javascript");
   const [selectedgenre, setgenre] = useState("books");
   function onClickHandler(choice) {
     setgenre(choice);
   }
 
-  function onSelectHandler() {}
+  function onSelectHandler(book) {
+    setbranch(book);
+  }
+
   return (
     <div className="App">
       <h1> 📚 myChoice </h1>
@@ -78,12 +83,24 @@ export default function App() {
         ))}
       </div>
       <hr />
+
       <div>
-        {Object.keys(selectedgenre).map((book) => (
+        {Object.keys(myChoice[selectedgenre]).map((book) => (
           <span key={book}>
-            <button onClick={() => onSelectHandler()}></button>
+            <button onClick={() => onSelectHandler(book)}>{book}</button>
           </span>
         ))}
+      </div>
+      <hr />
+      <div>
+        <ul>
+          {/* {setbranch.map((xyz) => (
+            <li key={xyz.name}>
+              <div></div>
+              <div></div>
+            </li>
+          ))} */}
+        </ul>
       </div>
     </div>
   );
