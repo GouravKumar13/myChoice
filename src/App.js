@@ -62,12 +62,13 @@ const myChoice = {
 export default function App() {
   const [selectedbranch, setbranch] = useState("javascript");
   const [selectedgenre, setgenre] = useState("books");
-  function onClickHandler(choice) {
-    setgenre(choice);
+
+  function onClickHandler(genre) {
+    setgenre(genre);
   }
 
   function onSelectHandler(book) {
-    setbranch(book);
+    setbranch(book[selectedbranch]);
   }
 
   return (
@@ -75,10 +76,9 @@ export default function App() {
       <h1> 📚 myChoice </h1>
       <p>Checkout my Favorite things. Select a genre to get started with</p>
       <div>
-        {Object.keys(myChoice).map((choice) => (
-          <button key={choice} onClick={() => onClickHandler(choice)}>
-            {choice}
-            {console.log(selectedgenre)}
+        {Object.keys(myChoice).map((genre) => (
+          <button key={genre} onClick={() => onClickHandler(genre)}>
+            {genre}
           </button>
         ))}
       </div>
@@ -86,20 +86,16 @@ export default function App() {
 
       <div>
         {Object.keys(myChoice[selectedgenre]).map((book) => (
-          <span key={book}>
-            <button onClick={() => onSelectHandler(book)}>{book}</button>
-          </span>
+          <button key={book} onClick={() => onSelectHandler(book)}>
+            {book}
+          </button>
         ))}
       </div>
       <hr />
       <div>
         <ul>
-          {/* {setbranch.map((xyz) => (
-            <li key={xyz.name}>
-              <div></div>
-              <div></div>
-            </li>
-          ))} */}
+          {/* {Object.keys(selectedbranch).map((x) => console.log(x))} */}
+          {console.log(myChoice[selectedbranch])}
         </ul>
       </div>
     </div>
