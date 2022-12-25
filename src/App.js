@@ -68,8 +68,10 @@ export default function App() {
   }
 
   function onSelectHandler(book) {
-    setbranch(book[selectedbranch]);
+    setbranch(book);
   }
+
+  const inner = myChoice[selectedgenre];
 
   return (
     <div className="App">
@@ -85,7 +87,7 @@ export default function App() {
       <hr />
 
       <div>
-        {Object.keys(myChoice[selectedgenre]).map((book) => (
+        {Object.keys(inner).map((book) => (
           <button key={book} onClick={() => onSelectHandler(book)}>
             {book}
           </button>
@@ -94,8 +96,12 @@ export default function App() {
       <hr />
       <div>
         <ul>
-          {/* {Object.keys(selectedbranch).map((x) => console.log(x))} */}
-          {console.log(myChoice[selectedbranch])}
+          {inner[selectedbranch].map((xyz) => (
+            <li key={xyz}>
+              <div>{xyz.name}</div>
+              <div>{xyz.rating}</div>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
