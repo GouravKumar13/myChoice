@@ -75,7 +75,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1> 📚 myChoice </h1>
+      <h1><span> 📚</span> myChoice </h1>
       <p>Checkout my Favorite things. Select a genre to get started with</p>
       <div>
         {Object.keys(myChoice).map((genre) => (
